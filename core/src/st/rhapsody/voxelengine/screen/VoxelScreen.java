@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.*;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
@@ -111,7 +112,7 @@ public class VoxelScreen implements Screen {
 
     private ShaderProgram setupShaders(){
         ShaderProgram.pedantic = true;
-        ShaderProgram shaderProgram = new ShaderProgram(Gdx.files.internal("data/shaders/shader.vs"), Gdx.files.internal("data/shaders/shader.fs"));
+        ShaderProgram shaderProgram = new ShaderProgram(Gdx.files.internal("data/shaders/underwater.vs"), Gdx.files.internal("data/shaders/underwater.fs"));
         System.out.println(shaderProgram.isCompiled() ? "Shaders compiled ok" : "Shaders didn't compile ok: " + shaderProgram.getLog());
         return shaderProgram;
     }
@@ -126,8 +127,9 @@ public class VoxelScreen implements Screen {
         texture = new Texture(Gdx.files.internal("data/textures.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         environment = new Environment();
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 234 / 255f, 168 / 255f, 240 / 255f, 1f));
-        environment.set(new ColorAttribute(ColorAttribute.Fog, 234 / 255f, 168 / 255f, 240 / 255f, 1f));
+        //environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 234 / 255f, 168 / 255f, 240 / 255f, 1f));
+        environment.set(new ColorAttribute(ColorAttribute.Fog, 0 / 255f, 255 / 255f, 222 / 255f, 1f));
+        environment.add(new DirectionalLight().set(229/255f, 255/255f, 247/255f, 0f, -1f, -0.2f));
         return new Material("Material1", new TextureAttribute(TextureAttribute.Diffuse, texture));
     }
 

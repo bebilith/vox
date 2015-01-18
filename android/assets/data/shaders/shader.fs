@@ -39,7 +39,7 @@ void main()
 
     const float LOG2 = 1.442695;
     float z = (gl_FragCoord.z / gl_FragCoord.w)/4.0;
-    float fogFactor = exp2( -0.02 * 0.02 * z * z * LOG2 );
+    float fogFactor = exp2( -0.01 * 0.01 * z * z * LOG2 );
     fogFactor = clamp(fogFactor, 0.0, 1.0);
 
     gl_FragColor = mix(u_fogColor, finalColor, fogFactor );
