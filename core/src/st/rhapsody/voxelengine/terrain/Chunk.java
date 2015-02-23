@@ -34,7 +34,7 @@ public abstract class Chunk {
     public Chunk(final Vector3 position) {
         this.position = position;
         map = new byte[(Terrain.WIDTH * Terrain.WIDTH) * Terrain.HEIGHT];
-        // If there already is a lightmap created it means a neighouring chunk added some lights for us
+        // If there already is a lightmap created it means a neighbouring chunk added some lights for us
         if (!lightMaps.containsKey(position)) {
             lightMap = new byte[(Terrain.WIDTH * Terrain.WIDTH) * Terrain.HEIGHT];
             lightMaps.put(position, lightMap);
@@ -361,5 +361,9 @@ public abstract class Chunk {
 
     public boolean isRecalculating() {
         return isRecalculating;
+    }
+
+    public boolean isVisible() {
+        return true;
     }
 }

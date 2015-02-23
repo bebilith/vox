@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultShaderProvider;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import st.rhapsody.voxelengine.input.PlayerController;
 import st.rhapsody.voxelengine.render.VoxelRender;
 import st.rhapsody.voxelengine.terrain.Terrain;
 
@@ -25,7 +26,7 @@ public class VoxelScreen implements Screen {
     private PerspectiveCamera camera;
     private VoxelRender voxelRender;
     private ModelBatch voxelBatch;
-    private FirstPersonCameraController firstPersonCameraController;
+    private PlayerController firstPersonCameraController;
     private Environment environment;
     private BitmapFont font;
     private SpriteBatch spriteBatch;
@@ -112,13 +113,13 @@ public class VoxelScreen implements Screen {
 
     private ShaderProgram setupShaders(){
         ShaderProgram.pedantic = true;
-        ShaderProgram shaderProgram = new ShaderProgram(Gdx.files.internal("data/shaders/underwater.vs"), Gdx.files.internal("data/shaders/underwater.fs"));
+        ShaderProgram shaderProgram = new ShaderProgram(Gdx.files.internal("data/shaders/shader.vs"), Gdx.files.internal("data/shaders/shader.fs"));
         System.out.println(shaderProgram.isCompiled() ? "Shaders compiled ok" : "Shaders didn't compile ok: " + shaderProgram.getLog());
         return shaderProgram;
     }
 
     private void setupCameraController() {
-        firstPersonCameraController = new FirstPersonCameraController(camera);
+        firstPersonCameraController = new PlayerController(camera);
         firstPersonCameraController.setVelocity(125);
         Gdx.input.setInputProcessor(firstPersonCameraController);
     }

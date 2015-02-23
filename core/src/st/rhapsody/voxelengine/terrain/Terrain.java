@@ -3,7 +3,6 @@ package st.rhapsody.voxelengine.terrain;
 import com.badlogic.gdx.math.Vector3;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -12,7 +11,7 @@ import java.util.HashMap;
 public class Terrain {
     public static int WIDTH = 16;
     public static int HEIGHT = 64;
-    public static int VIEWRANGE = 100;
+    public static int VIEWRANGE = 300;
     //public static final long SEED = -8675041922514645086l;
     public static final long SEED = 0; // Will generate a new landscape every time
     private final Vector3 position = new Vector3();
