@@ -29,7 +29,7 @@ public class PlayerController extends FirstPersonCameraController {
         Collection<Chunk> chunkList =terrain.getChunks();
         for (Chunk chunk: chunkList){
             if (chunk.isVisible()){
-                chunk.getRadius()
+                //chunk.getRadius()
             }
         }
         return false;

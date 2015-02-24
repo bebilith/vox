@@ -119,7 +119,7 @@ public class VoxelScreen implements Screen {
     }
 
     private void setupCameraController() {
-        firstPersonCameraController = new PlayerController(camera);
+        firstPersonCameraController = new PlayerController(camera, terrain);
         firstPersonCameraController.setVelocity(125);
         Gdx.input.setInputProcessor(firstPersonCameraController);
     }
